@@ -1,0 +1,16 @@
+$color-1: rgb(13, 236, 181);
+
+html {
+  color: $color-1;
+}
+
+html {
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 10%;
+}
