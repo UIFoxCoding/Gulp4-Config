@@ -1,11 +1,10 @@
 // -------------------- Export Configs
 module.exports = {
-  production: false, // use to programmatically operate on 
-  // gulp tasks based on environment
   // -------------------- autoprefixer
   autoprefixer: {
     opts: {
-      browsers: ['last 10 versions']
+      browsers: ["last 8 versions"],
+      cascade: false
     }
   },
   // -------------------- browsersync
@@ -26,7 +25,7 @@ module.exports = {
     ]
   },
   html: {
-    src: ['./src/**/*.html', '!src/assets/bin/**/*'],
+    src: ['./src/**/*.html', '!src/template/**/*'],
     htmlmin: { // In case more html file operations are needed.
       opts: {
         // https://github.com/kangax/html-minifier
@@ -36,28 +35,12 @@ module.exports = {
     },
     dest: './dist/'
   },
-  // -------------------- new-task
-  newtask: {
-    src: [
-      "./gulp/utils/newTaskTemplate.js"
-    ],
-    outputName: "TASK-TEMPLATE.js",
-    dest: "./gulp/tasks/"
-  },
-  // -------------------- rename
-  rename: {
-    min: {
-      suffix: '.min'
-    }
-  },
   // -------------------- sass
   sass: {
     src: [
       "./src/assets/styles/sass/**/*.{scss,sass}"
     ],
-    opts: {}, // add sass options here
-    outputName: 'main.css',
-    dest: './src/assets/styles/css/'
+    dest: './dist/assets/css/'
   },
   // -------------------- scripts
   scripts: {
@@ -66,64 +49,37 @@ module.exports = {
     ],
     dest: './dist/assets/js'
   },
-  // -------------------- styles
-  styles: {
+  // -------------------- images
+  img: {
     src: [
-      './src/assets/styles/css/**/*.css',
+      './src/assets/img/**/*',
     ],
-    dest: './dist/assets/css'
+    dest: './dist/assets/img'
   },
-  // -------------------- typescript
-  typescript: {
+  // -------------------- fonts
+  fonts: {
     src: [
-      './src/assets/scripts/ts/**/*.ts'
+      './src/assets/fonts/**/*',
     ],
-    dest: './src/assets/scripts/js',
-    opts: {
-      noImplicitAny: true
-    }
+    dest: './dist/assets/fonts'
   },
   // -------------------- vendors
   vendors: {
     js: {
-      src: [
-        './bower_components/bootstrap/dist/js/bootstrap.min.js',
-        './bower_components/jquery/dist/jquery.min.js',
-        './src/assets/bin/bootstrap-4.0.0-alpha/dist/js/bootstrap.min.js'
-      ],
-      dest: './dist/assets/js/vendors'
+      src: './src/assets/vendors/js/**/*.js',
+      dest: './dist/assets/vendors/js'
     },
     css: {
-      src: [
-        './bower_components/font-awesome/css/font-awesome.min.css',
-        './bower_components/font-awesome/css/font-awesome.css.map',
-        './bower_components/bootstrap/dist/css/bootstrap.min.css',
-        './bower_components/bootstrap/dist/css/bootstrap.min.css.map'
-      ],
-      dest: './dist/assets/css/vendors'
+      src: './src/assets/vendors/css/**/*.css',
+      dest: './dist/assets/vendors/css'
     },
     sass: {
-      // NOTE: This is to perform operations on the sass files
-      src: [
-        './bower_components/font-awesome/scss/**/*.scss', // ex
-        './src/assets/bin/bootstrap-4.0.0-alpha/scss/**/*.scss' // ex
-      ],
-      opts: {},
-      dest: './dist/assets/css/vendors'
-    },
-    less: {
-      src: [
-        './bower_components/bootstrap/less/**/*.less'
-      ],
-      opts: {},
-      dest: './dist/assets/css/vendors'
+      src: './src/assets/vendors/sass/**/*.{scss,sass}',
+      dest: './dist/assets/vendors/css'
     },
     fonts: {
-      src: [
-        './bower_components/bootstrap/fonts/**/*.*',
-        './bower_components/font-awesome/fonts/**/*.*'
-      ],
-      dest: './dist/assets/fonts'
+      src: './src/assets/vendors/fonts/**/*',
+      dest: './dist/assets/vendors/fonts'
     }
   }
 }

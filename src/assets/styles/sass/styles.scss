@@ -1,16 +1,22 @@
+// Comments
 $color-1: rgb(13, 236, 181);
 
-html {
-  color: $color-1;
+/* html1 */
+html {color: $color-1;
 }
 
 html {
-  font-size: 24px;
-  font-family: sans-serif;
+font-size: 24px;font-family: sans-serif;
 }
 
-.container {
-  display: flex;
+body {padding: 40px;}
+
+/* ---
+// container
+--- */
+.container 
+{display: flex;
   flex-direction: row;
   flex-basis: 10%;
+  background: red;
 }
