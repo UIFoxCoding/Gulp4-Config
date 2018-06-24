@@ -15,6 +15,7 @@ module.exports = function (gulp, plugins) {
     // ---- JS
     var js =
       gulp.src(config.vendors.js.src)
+      .pipe(plugins.concat('vendors.js'))
       .pipe(gulp.dest(config.vendors.js.dest))
       .pipe(plugins.uglify())
       .pipe(plugins.rename({
@@ -27,6 +28,16 @@ module.exports = function (gulp, plugins) {
     // ---- CSS
     var css =
       gulp.src(config.vendors.css.src)
+      .pipe(plugins.jsbeautifier({
+        indent_size: 2
+      }))
+      .pipe(plugins.concat('vendors.css'))
+      .pipe(gulp.dest(config.vendors.css.dest))
+      .pipe(plugins.cssnano())
+      .pipe(plugins.rename({
+        suffix: ".min",
+        extname: ".css"
+      }))
       .pipe(gulp.dest(config.vendors.css.dest));
 
     // ---- Fonts
@@ -34,12 +45,7 @@ module.exports = function (gulp, plugins) {
       gulp.src(config.vendors.fonts.src)
       .pipe(gulp.dest(config.vendors.fonts.dest));
 
-    // ---- SASS
-    var sass =
-      gulp.src(config.vendors.sass.src)
-      .pipe(gulp.dest(config.vendors.sass.dest));
-
     // -------------------- End Task
-    return merge(js, sass, css, fonts);
+    return merge(js, css, fonts);
   };
 };

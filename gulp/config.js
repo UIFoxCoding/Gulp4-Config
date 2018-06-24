@@ -1,5 +1,10 @@
 // -------------------- Export Configs
 module.exports = {
+  production: false,
+  // -------------------- Path
+  path: {
+    clean: './dist/'
+  },
   // -------------------- autoprefixer
   autoprefixer: {
     opts: {
@@ -18,21 +23,11 @@ module.exports = {
       './src/**/*.html'
     ]
   },
-  // -------------------- clean
-  clean: {
-    folders: [
-      './dist/'
-    ]
-  },
   html: {
-    src: ['./src/**/*.html', '!src/template/**/*'],
-    htmlmin: { // In case more html file operations are needed.
-      opts: {
-        // https://github.com/kangax/html-minifier
-        collapseWhitespace: true,
-        removeComments: true
-      }
-    },
+    src: [
+      './src/**/*.html',
+      '!src/template/**/*'
+    ],
     dest: './dist/'
   },
   // -------------------- sass
@@ -71,10 +66,6 @@ module.exports = {
     },
     css: {
       src: './src/assets/vendors/css/**/*.css',
-      dest: './dist/assets/vendors/css'
-    },
-    sass: {
-      src: './src/assets/vendors/sass/**/*.{scss,sass}',
       dest: './dist/assets/vendors/css'
     },
     fonts: {

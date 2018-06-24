@@ -5,7 +5,7 @@ module.exports = function (gulp, plugins) {
   return function (cb) {
     var stream =
       // -------------------- Start Task
-      del(config.clean.folders, cb);
+      del(config.path.clean, cb);
       // -------------------- End Task
     return stream;
   };
