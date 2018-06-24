@@ -5,15 +5,17 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       gulp.src(config.scripts.src)
-      .pipe(plugins.sourcemaps.init())
+      .pipe(plugins.if(config.production, plugins.sourcemaps.init()))
       .pipe(plugins.jsbeautifier({
         indent_size: 2
       }))
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(plugins.uglify())
-      .pipe(plugins.rename("main.min.js"))
-      .pipe(plugins.sourcemaps.write('.'))
-      .pipe(gulp.dest(config.scripts.dest));
+      .pipe(plugins.if(config.production, 
+        plugins.uglify(),
+        plugins.rename("main.min.js"),
+        plugins.sourcemaps.write('.'),
+        gulp.dest(config.scripts.dest)
+      ));
     // -------------------- End Task
     return stream;
   };

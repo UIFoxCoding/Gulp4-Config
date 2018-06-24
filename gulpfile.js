@@ -10,22 +10,17 @@ function getTask(task) {
 // -------------------- Gulp Tasks
 gulp.task('html', getTask('html'));
 gulp.task('sass', getTask('sass'));
-//gulp.task('styles', getTask('styles'));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('images', getTask('images'));
 gulp.task('fonts', getTask('fonts'));
 gulp.task('vendors', getTask('vendors'));
-//gulp.task('sync', getTask('browsersync'));
+gulp.task('sync', getTask('browsersync'));
+gulp.task('moveDist', getTask('move-dist'));
 gulp.task('clean', getTask('clean'));
 
 // -------------------- Default Task
-//gulp.task('default', gulp.series(
-//	gulp.parallel('html', 'sass', 'scripts'), 'sync'));
-
-// -------------------- Build Task
-//gulp.task('build', gulp.series('clean',
-//	gulp.parallel('scripts', 'styles', 'html'), 'vendors', 'moveDist'));
+//gulp.task('default', gulp.series('build', 'sync'));
 
 // -------------------- Build Task
 gulp.task('build', gulp.series('clean',
-	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images')));
+	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images', 'vendors')));

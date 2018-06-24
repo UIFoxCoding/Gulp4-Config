@@ -1,6 +1,9 @@
 // -------------------- Export Configs
 module.exports = {
   production: false,
+  // -------------------- Project
+  projectDir: './../_package/',
+  projectName: 'project-name',
   // -------------------- Path
   path: {
     clean: './dist/'
@@ -15,11 +18,16 @@ module.exports = {
   // -------------------- browsersync
   browsersync: {
     opts: {
-      server: './src/'
+      server: {
+        baseDir: './dist/'
+      },
+      port: 4000,
+      notify: false
     },
     watch: [
-      './src/assets/styles/css/**/*.css',
+      './src/assets/styles/sass/**/*.{scss,sass}',
       './src/assets/scripts/js/**/*.js',
+      './src/assets/vendors/**/*',
       './src/**/*.html'
     ]
   },

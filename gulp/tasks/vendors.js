@@ -3,7 +3,7 @@
 // Description: move all node and bower dependencies to dist
 // easily add sass, less, etc. Operate on each as needed.
 // basic configuration supplied
-// npm install --save-dev merge-stream gulp-newer
+// npm install --save-production merge-stream gulp-newer
 // gulp-load-plugins
 // =========================================================
 var config = require('../config.js'),
@@ -17,13 +17,14 @@ module.exports = function (gulp, plugins) {
       gulp.src(config.vendors.js.src)
       .pipe(plugins.concat('vendors.js'))
       .pipe(gulp.dest(config.vendors.js.dest))
-      .pipe(plugins.uglify())
-      .pipe(plugins.rename({
-        suffix: ".min",
-        extname: ".js"
-      }))
-      .pipe(gulp.dest(config.vendors.js.dest));
-
+      .pipe(plugins.if(config.production,
+        plugins.uglify(),
+        plugins.rename({
+          suffix: ".min",
+          extname: ".js"
+        }),
+        gulp.dest(config.vendors.js.dest)
+      ));
 
     // ---- CSS
     var css =
@@ -33,12 +34,14 @@ module.exports = function (gulp, plugins) {
       }))
       .pipe(plugins.concat('vendors.css'))
       .pipe(gulp.dest(config.vendors.css.dest))
-      .pipe(plugins.cssnano())
-      .pipe(plugins.rename({
-        suffix: ".min",
-        extname: ".css"
-      }))
-      .pipe(gulp.dest(config.vendors.css.dest));
+      .pipe(plugins.if(config.production,
+        plugins.cssnano(),
+        plugins.rename({
+          suffix: ".min",
+          extname: ".css"
+        }),
+        gulp.dest(config.vendors.css.dest)
+      ));
 
     // ---- Fonts
     var fonts =
