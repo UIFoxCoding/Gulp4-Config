@@ -15,13 +15,14 @@ gulp.task('scripts', getTask('scripts'));
 gulp.task('images', getTask('images'));
 gulp.task('fonts', getTask('fonts'));
 gulp.task('vendors', getTask('vendors'));
+gulp.task('favicons', getTask('favicons'));
 gulp.task('sync', getTask('browsersync'));
 gulp.task('moveDist', getTask('move-dist'));
 gulp.task('clean', getTask('clean'));
 
 // -------------------- Build Task
 gulp.task('build', gulp.series('clean',
-	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images', 'vendors')));
+	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images', 'vendors', 'favicons')));
 
 // -------------------- Default Task
 gulp.task('default', gulp.series('build', 'sync'));

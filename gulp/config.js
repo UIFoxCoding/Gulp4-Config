@@ -66,6 +66,26 @@ module.exports = {
     ],
     dest: './dist/assets/fonts'
   },
+  // -------------------- favicons
+  favicons: {
+    src: [
+      './src/favicons/*.{jpg,jpeg,png,gif}'
+    ],
+    opts: {
+      icons: {
+        appleIcon: true,
+        favicons: true,
+        online: false,
+        appleStartup: false,
+        android: true,
+        firefox: false,
+        yandex: false,
+        windows: false,
+        coast: false
+      }
+    },
+    dest: './dist/favicons/'
+  },
   // -------------------- vendors
   vendors: {
     js: {
@@ -81,10 +101,10 @@ module.exports = {
       dest: './dist/assets/css/vendors'
     },
     //sass: {
-      //src: [
-        //'./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
-      //],
-      //dest: './dist/assets/css/vendors'
+    //src: [
+    //'./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
+    //],
+    //dest: './dist/assets/css/vendors'
     //},
     fonts: {
       src: [
