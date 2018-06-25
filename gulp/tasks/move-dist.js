@@ -6,15 +6,7 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       gulp.src('./dist/**/*.*')
-      .pipe(gulp.dest(
-        config.projectDir +
-        config.projectName +
-        '_' +
-        (date.getFullYear()) +
-        '-' +
-        (date.getMonth()) +
-        '-' +
-        (date.getDate())));
+      .pipe(gulp.dest(config.projectDir + config.projectName + '/' + config.projectVersion));
     // -------------------- End Task
     return stream;
   };

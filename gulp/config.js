@@ -4,6 +4,7 @@ module.exports = {
   // -------------------- Project
   projectDir: './../_package/',
   projectName: 'project-name',
+  projectVersion: 'v1.1.2',
   // -------------------- Path
   path: {
     clean: './dist/'
