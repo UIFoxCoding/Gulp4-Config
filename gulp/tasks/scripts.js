@@ -5,6 +5,7 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       gulp.src(config.scripts.src)
+      .pipe(plugins.plumber())
       .pipe(plugins.if(config.production, plugins.sourcemaps.init()))
       .pipe(plugins.jsbeautifier({
         indent_size: 2

@@ -15,33 +15,34 @@ module.exports = function (gulp, plugins) {
     // ---- JS
     var js =
       gulp.src(config.vendors.js.src)
-      .pipe(plugins.concat('vendors.js'))
-      .pipe(gulp.dest(config.vendors.js.dest))
-      .pipe(plugins.if(config.production,
-        plugins.uglify(),
-        plugins.rename({
-          suffix: ".min",
-          extname: ".js"
-        }),
-        gulp.dest(config.vendors.js.dest)
-      ));
+      .pipe(plugins.uglify())
+      .pipe(plugins.rename({
+        suffix: ".min",
+        extname: ".js"
+      }))
+      .pipe(gulp.dest(config.vendors.js.dest));
 
     // ---- CSS
     var css =
       gulp.src(config.vendors.css.src)
-      .pipe(plugins.jsbeautifier({
-        indent_size: 2
+      .pipe(plugins.cssnano())
+      .pipe(plugins.rename({
+        suffix: ".min",
+        extname: ".css"
       }))
-      .pipe(plugins.concat('vendors.css'))
-      .pipe(gulp.dest(config.vendors.css.dest))
-      .pipe(plugins.if(config.production,
-        plugins.cssnano(),
-        plugins.rename({
-          suffix: ".min",
-          extname: ".css"
-        }),
-        gulp.dest(config.vendors.css.dest)
-      ));
+      .pipe(gulp.dest(config.vendors.css.dest));
+
+    // ---- SASS
+    //var sass =
+      //gulp.src(config.vendors.sass.src)
+      //.pipe(plugins.sass().on('error', plugins.sass.logError))
+      //.pipe(plugins.autoprefixer(config.autoprefixer.opts))
+      //.pipe(plugins.cssnano())
+      //.pipe(plugins.rename({
+        //suffix: ".min",
+        //extname: ".css"
+      //}))
+      //.pipe(gulp.dest(config.vendors.sass.dest));
 
     // ---- Fonts
     var fonts =
@@ -49,6 +50,6 @@ module.exports = function (gulp, plugins) {
       .pipe(gulp.dest(config.vendors.fonts.dest));
 
     // -------------------- End Task
-    return merge(js, css, fonts);
+    return merge(js, css, fonts); // + sass
   };
 };

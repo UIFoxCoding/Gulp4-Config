@@ -6,6 +6,7 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       gulp.src(config.html.src)
+      .pipe(plugins.plumber())
       .pipe(fileinclude({
         prefix: '@@',
         basepath: '@file'

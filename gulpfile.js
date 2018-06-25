@@ -18,9 +18,9 @@ gulp.task('sync', getTask('browsersync'));
 gulp.task('moveDist', getTask('move-dist'));
 gulp.task('clean', getTask('clean'));
 
-// -------------------- Default Task
-//gulp.task('default', gulp.series('build', 'sync'));
-
 // -------------------- Build Task
 gulp.task('build', gulp.series('clean',
 	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images', 'vendors')));
+
+// -------------------- Default Task
+gulp.task('default', gulp.series('build', 'sync'));

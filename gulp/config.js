@@ -27,7 +27,6 @@ module.exports = {
     watch: [
       './src/assets/styles/sass/**/*.{scss,sass}',
       './src/assets/scripts/js/**/*.js',
-      './src/assets/vendors/**/*',
       './src/**/*.html'
     ]
   },
@@ -69,16 +68,28 @@ module.exports = {
   // -------------------- vendors
   vendors: {
     js: {
-      src: './src/assets/vendors/js/**/*.js',
-      dest: './dist/assets/vendors/js'
+      src: [
+        './node_modules/jquery/dist/jquery.slim.js'
+      ],
+      dest: './dist/assets/js/vendors'
     },
     css: {
-      src: './src/assets/vendors/css/**/*.css',
-      dest: './dist/assets/vendors/css'
+      src: [
+        './node_modules/bootstrap/dist/css/bootstrap.css'
+      ],
+      dest: './dist/assets/css/vendors'
     },
+    //sass: {
+      //src: [
+        //'./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
+      //],
+      //dest: './dist/assets/css/vendors'
+    //},
     fonts: {
-      src: './src/assets/vendors/fonts/**/*',
-      dest: './dist/assets/vendors/fonts'
+      src: [
+        './node_modules/@fortawesome/fontawesome-free/webfonts/**/*'
+      ],
+      dest: './dist/assets/fonts/vendors'
     }
   }
 }

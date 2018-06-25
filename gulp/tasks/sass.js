@@ -5,6 +5,7 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       gulp.src(config.sass.src)
+      .pipe(plugins.plumber())
       .pipe(plugins.if(config.production, plugins.sourcemaps.init()))
       .pipe(plugins.sass().on('error', plugins.sass.logError))
       .pipe(plugins.autoprefixer(config.autoprefixer.opts))
