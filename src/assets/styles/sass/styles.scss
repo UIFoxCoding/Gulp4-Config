@@ -1,21 +1,6 @@
-// Comments
-$color-1: rgb(54, 45, 102);
 @import 'common/common';
-
-/* html1 */
-html {color: $color-1;
-}
-
-html {
-font-size: 24px;font-family: sans-serif;
-}
-
-/* ---
-// container
---- */
-.container 
-{display: flex;
+.flex-test {
+  display: flex;
   flex-direction: row;
-  flex-basis: 10%;
-  background: rgb(210, 218, 223);
+  flex-basis: 50%;
 }

@@ -92,25 +92,25 @@ module.exports = {
       src: [
         './node_modules/jquery/dist/jquery.slim.js'
       ],
-      dest: './dist/assets/js/vendors'
+      dest: './dist/assets/vendors/js'
     },
     css: {
       src: [
         './node_modules/bootstrap/dist/css/bootstrap.css'
       ],
-      dest: './dist/assets/css/vendors'
+      dest: './dist/assets/vendors/css'
     },
     //sass: {
     //src: [
     //'./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
     //],
-    //dest: './dist/assets/css/vendors'
+    //dest: './dist/assets/vendors/css'
     //},
     fonts: {
       src: [
         './node_modules/@fortawesome/fontawesome-free/webfonts/**/*'
       ],
-      dest: './dist/assets/fonts/vendors'
+      dest: './dist/assets/vendors/fonts'
     }
   }
 }
