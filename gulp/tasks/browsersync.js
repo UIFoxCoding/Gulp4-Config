@@ -6,10 +6,6 @@ module.exports = function (gulp, plugins) {
     var stream =
       // -------------------- Start Task
       browserSync.init(config.browsersync.opts);
-
-    browserSync.watch(config.html.src, gulp.series('html'));
-    browserSync.watch(config.sass.src, gulp.series('sass'));
-    browserSync.watch(config.scripts.src, gulp.series('scripts'));
     browserSync.watch(config.browsersync.watch).on('change', browserSync.reload);
     // -------------------- End Task
     return stream;

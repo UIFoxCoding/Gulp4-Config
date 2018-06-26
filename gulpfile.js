@@ -9,20 +9,23 @@ function getTask(task) {
 }
 
 // -------------------- Gulp Tasks
+gulp.task('clean', getTask('clean'));
 gulp.task('html', getTask('html'));
-gulp.task('sass', getTask('sass'));
+gulp.task('styles', getTask('styles'));
 gulp.task('scripts', getTask('scripts'));
 gulp.task('images', getTask('images'));
 gulp.task('fonts', getTask('fonts'));
 gulp.task('vendors', getTask('vendors'));
 gulp.task('favicons', getTask('favicons'));
 gulp.task('sync', getTask('browsersync'));
+gulp.task('watch', getTask('watch'));
 gulp.task('moveDist', getTask('move-dist'));
-gulp.task('clean', getTask('clean'));
 
 // -------------------- Build Task
 gulp.task('build', gulp.series('clean',
-	gulp.parallel('html', 'sass', 'scripts', 'fonts', 'images', 'vendors', 'favicons')));
+	gulp.parallel('html', 'styles', 'scripts', 'fonts', 'images', 'vendors',
+		'favicons')));
 
 // -------------------- Default Task
-gulp.task('default', gulp.series('build', 'sync'));
+gulp.task('default', gulp.series('build',
+	gulp.parallel('watch', 'sync')));

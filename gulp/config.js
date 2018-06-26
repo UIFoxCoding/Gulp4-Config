@@ -1,14 +1,17 @@
 // -------------------- Export Configs
 module.exports = {
   production: false,
+
   // -------------------- Project
   projectDir: './../_package/',
   projectName: 'project-name',
-  projectVersion: 'v1.1.2',
+  projectVersion: 'v1.0',
+
   // -------------------- Path
   path: {
     clean: './dist/'
   },
+
   // -------------------- autoprefixer
   autoprefixer: {
     opts: {
@@ -16,6 +19,7 @@ module.exports = {
       cascade: false
     }
   },
+
   // -------------------- browsersync
   browsersync: {
     opts: {
@@ -26,11 +30,13 @@ module.exports = {
       notify: false
     },
     watch: [
+      './src/**/*.html',
       './src/assets/styles/sass/**/*.{scss,sass}',
-      './src/assets/scripts/js/**/*.js',
-      './src/**/*.html'
+      './src/assets/scripts/js/**/*.js'
     ]
   },
+
+  // -------------------- html
   html: {
     src: [
       './src/**/*.html',
@@ -38,6 +44,7 @@ module.exports = {
     ],
     dest: './dist/'
   },
+
   // -------------------- sass
   sass: {
     src: [
@@ -45,6 +52,7 @@ module.exports = {
     ],
     dest: './dist/assets/css/'
   },
+
   // -------------------- scripts
   scripts: {
     src: [
@@ -52,6 +60,7 @@ module.exports = {
     ],
     dest: './dist/assets/js'
   },
+
   // -------------------- images
   img: {
     src: [
@@ -59,6 +68,7 @@ module.exports = {
     ],
     dest: './dist/assets/img'
   },
+
   // -------------------- fonts
   fonts: {
     src: [
@@ -66,6 +76,7 @@ module.exports = {
     ],
     dest: './dist/assets/fonts'
   },
+
   // -------------------- favicons
   favicons: {
     src: [
@@ -86,11 +97,12 @@ module.exports = {
     },
     dest: './dist/favicons/'
   },
+
   // -------------------- vendors
   vendors: {
     js: {
       src: [
-        './node_modules/jquery/dist/jquery.slim.js'
+        './node_modules/jquery/dist/jquery.js'
       ],
       dest: './dist/assets/vendors/js'
     },
@@ -102,6 +114,7 @@ module.exports = {
     },
     //sass: {
     //src: [
+    //'./src/assets/styles/vendors/*.{scss,sass}',
     //'./node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss'
     //],
     //dest: './dist/assets/vendors/css'
