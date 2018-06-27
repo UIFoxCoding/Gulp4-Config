@@ -11,12 +11,10 @@ module.exports = function (gulp, plugins) {
         indent_size: 2
       }))
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(plugins.if(config.production, 
-        plugins.uglify(),
-        plugins.rename("main.min.js"),
-        plugins.sourcemaps.write('.'),
-        gulp.dest(config.scripts.dest)
-      ));
+      .pipe(plugins.if(config.production, plugins.uglify()))
+      .pipe(plugins.if(config.production, plugins.rename("main.min.js")))
+      .pipe(plugins.if(config.production, plugins.sourcemaps.write('.')))
+      .pipe(plugins.if(config.production, gulp.dest(config.scripts.dest)));
     // -------------------- End Task
     return stream;
   };

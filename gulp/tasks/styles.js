@@ -13,11 +13,10 @@ module.exports = function (gulp, plugins) {
         indent_size: 2
       }))
       .pipe(gulp.dest(config.sass.dest))
-      .pipe(plugins.if(config.production,
-        plugins.cssnano(),
-        plugins.rename("styles.min.css"),
-        plugins.sourcemaps.write('.'),
-        gulp.dest(config.sass.dest)));
+      .pipe(plugins.if(config.production, plugins.cssnano()))
+      .pipe(plugins.if(config.production, plugins.rename("styles.min.css") ))
+      .pipe(plugins.if(config.production, plugins.sourcemaps.write('.')))
+      .pipe(plugins.if(config.production, gulp.dest(config.sass.dest)));
     // -------------------- End Task
     return stream;
   };
